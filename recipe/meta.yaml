@@ -12,7 +12,7 @@ source:
 build:
   # script: {{ PYTHON }} -m pip install --no-deps --ignore-installed .
   number: 1
-  skip: True  # [not osx]
+  skip: True  # [not osx or py<311]
 
 requirements:
   build:
