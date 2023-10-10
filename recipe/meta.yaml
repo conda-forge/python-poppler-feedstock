@@ -32,6 +32,7 @@ requirements:
     - pip
     - poppler
   run:
+    - python
     - poppler # poppler does not have a run-export yet
 
 test:
