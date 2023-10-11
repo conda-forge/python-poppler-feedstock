@@ -11,7 +11,7 @@ source:
 
 build:
   script: {{ PYTHON }} -m pip install --no-deps --ignore-installed .  # [win]
-  skip: true  # [py < 311 or win]
+  skip: true  # [py < 311]
   number: 2
 
 requirements:
@@ -19,14 +19,14 @@ requirements:
     - python                              # [build_platform != target_platform]
     - cross-python_{{ target_platform }}  # [build_platform != target_platform]
     - meson-python                        # [build_platform != target_platform]
-    - pkg-config                          # [not win]
+    - pkg-config                          # [not win and build_platform != target_platform]
     - {{ compiler('c') }}                 # [not win]
     - {{ compiler('cxx') }}               # [not win]
     - {{ compiler('clang') }}             # [win]
   host:
+    - python-build
     - meson-python
-    - python
-    - pkg-config   # [win] # building on windows currently only works when pkg-config is a host dependency
+    - pkg-config
     - python
     - wheel
     - pip
