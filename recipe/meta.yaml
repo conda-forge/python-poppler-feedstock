@@ -11,16 +11,14 @@ source:
 
 build:
   script: {{ PYTHON }} -m pip install --no-deps --ignore-installed .  # [win]
-  skip: true  # [py < 311]
+  skip: true  # [py < 311 or win]
   number: 2
 
 requirements:
   build:
     - python                              # [build_platform != target_platform]
     - cross-python_{{ target_platform }}  # [build_platform != target_platform]
-    - meson-python                        # [build_platform != target_platform]
     - meson >=1.0.0
-    - ninja                               
     - pkg-config                          # [not win]
     - {{ compiler('c') }}                 # [not win]
     - {{ compiler('cxx') }}               # [not win]
@@ -28,7 +26,6 @@ requirements:
   host:
     - pkg-config   # [win] # building on windows currently only works when pkg-config is a host dependency
     - python
-    - meson-python
     - wheel
     - pip
     - poppler
