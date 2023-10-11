@@ -18,12 +18,14 @@ requirements:
   build:
     - python                              # [build_platform != target_platform]
     - cross-python_{{ target_platform }}  # [build_platform != target_platform]
-    - meson >=1.0.0
+    - meson-python                        # [build_platform != target_platform]
     - pkg-config                          # [not win]
     - {{ compiler('c') }}                 # [not win]
     - {{ compiler('cxx') }}               # [not win]
     - {{ compiler('clang') }}             # [win]
   host:
+    - meson-python
+    - python
     - pkg-config   # [win] # building on windows currently only works when pkg-config is a host dependency
     - python
     - wheel
