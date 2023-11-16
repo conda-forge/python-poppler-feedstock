@@ -21,4 +21,4 @@ $PYTHON -m build -w -n -x \
     -Csetup-args=${MESON_ARGS_REDUCED// / -Csetup-args=} \
     || (cat builddir/meson-logs/meson-log.txt && exit 1)
 
-pip install dist/python_poppler*.whl
+$PYTHON -m pip install --no-deps dist/python_poppler*.whl
