@@ -11,7 +11,7 @@ source:
 
 build:
   script: {{ PYTHON }} -m pip install --no-deps --ignore-installed .  # [win]
-  number: 6
+  number: 7
 
 requirements:
   build:
@@ -20,6 +20,7 @@ requirements:
     - meson-python                        # [build_platform != target_platform]
     - pkg-config                          # [not win and build_platform != target_platform]
     - {{ compiler('c') }}                 # [not win]
+    - {{ stdlib("c") }}                   # [not win]
     - {{ compiler('cxx') }}               # [not win]
     - {{ compiler('clang') }}             # [win]
   host:
