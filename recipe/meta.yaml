@@ -6,12 +6,12 @@ package:
   version: {{ version }}
 
 source:
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/python_poppler-{{ version }}.tar.gz
+  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/python_poppler-{{ version }}.tar.gz
   sha256: e6ca5c23ec02350bf2cef85a6bf9f1b261796436db478176f9d24fb14eeecc6a
 
 build:
   script: {{ PYTHON }} -m pip install --no-deps --ignore-installed .  # [win]
-  number: 9
+  number: 10
 
 requirements:
   build:
