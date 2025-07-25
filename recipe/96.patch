@@ -1,0 +1,46 @@
+From ca6678d14dc0894ab2d848316072d409a3ae3b3f Mon Sep 17 00:00:00 2001
+From: Ali Kefia <ali.kefia@gmail.com>
+Date: Wed, 5 Mar 2025 14:07:37 +0100
+Subject: [PATCH] image::copy take no rect param (never implemented)
+
+---
+ src/cpp/image.cpp    | 6 +++++-
+ src/poppler/image.py | 2 +-
+ 2 files changed, 6 insertions(+), 2 deletions(-)
+
+diff --git a/src/cpp/image.cpp b/src/cpp/image.cpp
+index 725359b..76a0cef 100644
+--- a/src/cpp/image.cpp
++++ b/src/cpp/image.cpp
+@@ -102,7 +102,11 @@ PYBIND11_MODULE(image, m)
+         .def(py::init<int, int, image::format_enum>(), py::arg("iwidth"), py::arg("iheight"), py::arg("iformat"))
+         .def("bytes_per_row", &image::bytes_per_row)
+         // .def("const_data", &image::const_data)
++#if POPPLER_VERSION_MAJOR >= 25
++        .def("copy", &image::copy)
++#else
+         .def("copy", &image::copy, py::arg("rect") = rect())
++#endif
+         .def("data", &data)
+         .def("set_data", &set_data)
+         .def("format", &image::format)
+@@ -114,4 +118,4 @@ PYBIND11_MODULE(image, m)
+     m.def("supported_image_formats", &image::image::supported_image_formats);
+ }
+ 
+-} // namespace poppler
+\ No newline at end of file
++} // namespace poppler
+diff --git a/src/poppler/image.py b/src/poppler/image.py
+index a8c27e2..a9e81e9 100644
+--- a/src/poppler/image.py
++++ b/src/poppler/image.py
+@@ -48,7 +48,7 @@ def const_data(self):
+         return self._image.data()
+ 
+     def copy(self, rect=None):
+-        image = self._image.copy(rect or Rectangle()._rect)
++        image = self._image.copy()
+         return Image.from_object(image)
+ 
+     @property
