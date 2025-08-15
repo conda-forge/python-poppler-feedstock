@@ -297,5 +297,5 @@ In order to produce a uniquely identifiable distribution:
 Feedstock Maintainers
 =====================
 
-* [@0xbe7a](https://github.com/0xbe7a/)
+* [@48762](https://github.com/48762/)
 
