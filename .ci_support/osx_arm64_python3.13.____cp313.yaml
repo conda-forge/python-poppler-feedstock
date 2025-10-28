@@ -27,9 +27,11 @@ pin_run_as_build:
 poppler:
 - '25.07'
 python:
-- 3.9.* *_cpython
+- 3.13.* *_cp313
 target_platform:
 - osx-arm64
 zip_keys:
 - - c_compiler_version
   - cxx_compiler_version
+- - python
+  - channel_sources
