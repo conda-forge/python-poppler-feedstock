@@ -13,7 +13,7 @@ source:
 
 build:
   script: {{ PYTHON }} -m pip install --no-deps --ignore-installed .  # [win]
-  number: 13
+  number: 14
 
 requirements:
   build:
