@@ -33,6 +33,8 @@ requirements:
     - wheel
     - pip
     - poppler
+    - zlib
+    - expat
   run:
     - python
     - poppler # poppler does not have a run-export yet
