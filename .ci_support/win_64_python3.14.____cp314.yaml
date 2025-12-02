@@ -6,6 +6,8 @@ clang_compiler:
 - clang-cl
 clang_compiler_version:
 - '19'
+expat:
+- '2'
 pin_run_as_build:
   python:
     min_pin: x.x
@@ -16,3 +18,5 @@ python:
 - 3.14.* *_cp314
 target_platform:
 - win-64
+zlib:
+- '1'
