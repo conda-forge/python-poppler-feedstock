@@ -35,6 +35,7 @@ requirements:
     - poppler
     - zlib
     - expat
+    - libcurl
   run:
     - python
     - poppler # poppler does not have a run-export yet
