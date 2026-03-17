@@ -13,7 +13,7 @@ source:
 
 build:
   script: {{ PYTHON }} -m pip install --no-deps --ignore-installed .  # [win]
-  number: 13
+  number: 14
 
 requirements:
   build:
@@ -33,6 +33,9 @@ requirements:
     - wheel
     - pip
     - poppler
+    - zlib
+    - expat
+    - libcurl
   run:
     - python
     - poppler # poppler does not have a run-export yet
